@@ -36,7 +36,7 @@ def main():
 	start, end = 0, 99
 	bios = []
 	word_count = {}
-	while end < 500: # len(ids):  # BUG: will miss remainder if % 100 != 0
+	while end < len(ids):  # TODO: will miss remainder if count % 100 != 0
 		print "fetching bios %s-%s" % (start, end)
 		current = ids[start:end]
 
