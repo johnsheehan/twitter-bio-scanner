@@ -68,10 +68,8 @@ def main():
             bios.append(clean)
 
     # write bios to a file for later processing
-    bios_file = open("bios.txt", "w")
-    for bio in bios:
-        bios_file.write("%s\n" % bio)
-    bios_file.close()
+    with open("bios.txt", "w") as bios_file:
+        for bio in bios: bios_file.write("%s\n" % bio)
 
     # loop through bio array and process each bio
     print "processing bios"
@@ -80,10 +78,8 @@ def main():
         lower_words = map(unicode.lower, words)
         for word in lower_words:
             # exclude stop words
-            if stop_words.count(word) > 0: continue
-            current_count = word_count.get(word, 0)
-            current_count = current_count + 1
-            word_count[word] = current_count
+            if word in stop_words: continue
+            word_count[word] = word_count.get(word, 0) + 1
 
     # print out final counts
     for w in sorted(word_count, key=word_count.get):
