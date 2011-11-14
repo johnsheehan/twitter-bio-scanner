@@ -1,0 +1,2 @@
+simplejson==2.2.1
+oauth2==1.5.170
